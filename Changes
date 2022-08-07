@@ -1,0 +1,4 @@
+Revision History for {{$dist->name}}
+
+{{$NEXT}}
+  * Initial version, unleashed upon an unsuspecting world.
