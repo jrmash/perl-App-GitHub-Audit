@@ -17,6 +17,7 @@ nytprof*
 
 ## Perl Files (Dist::Zilla)
 .build/
+.gitnxtver_cache
 
 ## Perl Files (ExtUtils::MakeMaker)
 _eumm/
