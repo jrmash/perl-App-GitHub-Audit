@@ -5,7 +5,6 @@ use boolean;
 use strict;
 use warnings;
 
-use DateTime;
 use MooseX::App::Command;
 use MooseX::AlwaysCoerce;
 use MooseX::NiftyDelegation;
@@ -58,7 +57,7 @@ sub run ($self) {
         $self->_process_user( $owner );
     }
     $self->write_report();
-    
+
     return;
 }
 
@@ -86,26 +85,26 @@ sub _process_repository($self, $repo) {
     my $repoBranch = $repo->{'default_branch'};
     my $repoName   = $repo->{'name'};
     my $repoOwner  = $repo->{'owner'}->{'login'};
-    
+
     printf( "Processing: %s/%s\n", $repoOwner, $repoName );
-    
+
     my @prQuery = ($repoOwner, $repoName, {
         base      => $repoBranch,
         sort      => 'update', direction => 'desc',
         state     => 'closed',
     });
-    
+
     while (my $pr = $self->next_pull(@prQuery)) {
         ## Closed pull requests without this field in output
         ## were not merged to master, so skip them.
         next unless ($pr->{'merged_at'}); 
-        
+
         ## Merged pull requests with a merged date/time that
         ## falls outside the from/until times are skipped.
         my $prCreator = $pr->{'user'}->{'login'};
         my $prMergedAt = $self->parse_datetime( $pr->{'merged_at'} );
         my $prUrl = $pr->{'html_url'};
-        
+
         if ($self->compare_from_datetime($prMergedAt) < 0) {
             # printf( "Skipping ... %s\n", $prUrl );
             next;
@@ -114,7 +113,7 @@ sub _process_repository($self, $repo) {
             # printf( "Skipping ... %s\n", $prUrl );
             next;
         }
-        
+
         ## 
         my @prApprovers = ();
         my @prReviewQuery = ( $repoOwner, $repoName, $pr->{'number'} );
@@ -127,7 +126,7 @@ sub _process_repository($self, $repo) {
             }
             push( @prApprovers, $r->{'user'}->{'login'} );
         }
-        
+
         $self->add_report_data_row( [@reportRow, join(', ', @prApprovers)] );
     }
     return;

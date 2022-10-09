@@ -31,7 +31,7 @@ sub _build_github_api($self) {
         $api->pass( $ENV{'GITHUB_ACCT_PASS'} );
     }
     else {
-        warn( "GitHub credentials not found, using anonymous access.\n" );
+        warn( "WARNING: GitHub credentials not found, using anonymous access.\n" );
     }
 
     return( $api );
@@ -65,6 +65,7 @@ has '_github_repos_api' => (
     
     builder         => '_build__github_repos_api',
     handles         => [
+        'branch_protection',
         'next_org_repo',
         'next_user_repo',
     ],

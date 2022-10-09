@@ -5,6 +5,7 @@ use boolean;
 use strict;
 use warnings;
 
+use DateTime;
 use Moose::Role;
 use MooseX::AlwaysCoerce;
 use MooseX::NiftyDelegation;
