@@ -20,6 +20,7 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.036000",
   "NAME" => "App::GitHub::Audit",
   "PREREQ_PM" => {
+    "Config::Any" => 0,
     "Const::Fast" => 0,
     "Data::Table" => 0,
     "Data::Table::Excel" => 0,
@@ -33,7 +34,7 @@ my %WriteMakefileArgs = (
     "MooseX::NiftyDelegation" => 0,
     "MooseX::StrictConstructor" => 0,
     "MooseX::UndefTolerant" => 0,
-    "Net::GitHub::V3" => "1.02",
+    "Net::GitHub::V3" => "1.05",
     "Path::Tiny" => 0,
     "Term::ANSIColor" => 0,
     "Term::ReadKey" => 0,
@@ -51,7 +52,7 @@ my %WriteMakefileArgs = (
     "Test::CheckDeps" => "0.010",
     "Test::More" => "0.94"
   },
-  "VERSION" => "v0.1.0",
+  "VERSION" => "v0.2.0",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -59,6 +60,7 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Config::Any" => 0,
   "Const::Fast" => 0,
   "Data::Table" => 0,
   "Data::Table::Excel" => 0,
@@ -74,7 +76,7 @@ my %FallbackPrereqs = (
   "MooseX::NiftyDelegation" => 0,
   "MooseX::StrictConstructor" => 0,
   "MooseX::UndefTolerant" => 0,
-  "Net::GitHub::V3" => "1.02",
+  "Net::GitHub::V3" => "1.05",
   "Path::Tiny" => 0,
   "Term::ANSIColor" => 0,
   "Term::ReadKey" => 0,

@@ -1,6 +1,6 @@
 # VERSION
 
-version v0.1.0
+version v0.2.0
 
 # ABSTRACT
 
@@ -28,6 +28,33 @@ make install
 ```
 
 # COMMANDS
+
+## branch-protection-settings
+
+Generate a report containing a list of the branch protections defined for each
+repository in the specified organization or user namespaces.
+
+```perl
+gh-audit branch-protection-settings --help
+usage:
+    gh-audit branch-protection-settings [long options...]
+    gh-audit branch-protection-settings --user jrmash
+    gh-audit branch-protection-settings --help
+
+short description:
+    Generate a report containing a list of pull requests merged to each repository's default branch, along with the
+    list of users who approved them.
+
+options:
+    --user           Include resources owned by this user in the report. [Multiple]
+    --org            Include resources owned by this org in the report. [Multiple]
+    --report-format  The format of the report to generate. [Default:"csv"; Possible values: csv, tsv, xlsx]
+    --report-name    The base name of the report file to create. [Default:"branch-protection-settings"]
+    --help           Prints this usage information. [Flag]
+
+available subcommands:
+    help  Prints this usage information
+```
 
 ## pull-request-approvers
 
